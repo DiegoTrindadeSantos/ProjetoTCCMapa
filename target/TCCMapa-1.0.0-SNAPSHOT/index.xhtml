@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" 
+ 	xmlns:f="http://java.sun.com/jsf/core" 
+ 	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+<script src="http://calvinmetcalf.github.io/shapefile-js/dist/shp.js"></script>
+<script src="FileSaver.js"></script>
+
+<style type="text/css">
+/* Map */
+#map {
+	height: 300px;
+}
+
+input {
+	margin-top: 10px;
+}
+</style>
+
+</h:head>
+<h:body>
+
+
+
+	<h:form id="mapaForm" enctype="multipart/form-data">
+
+
+		<div id="map"></div>
+		<br />
+		<p:fileUpload fileUploadListener="#{MapaMB.handleFileUpload}" proccess="this" mode="advanced" onstart="Add(PF('uploadWG'))" uploadLabel="Enviar" label="Adicionar"
+                  update="messages" auto="true" allowTypes="/(\.|\/)(zip)$/" widgetVar="uploadWG" />
+        
+    	<p:growl id="messages" showDetail="true" />
+    	
+		<br />
+		
+		<span id="warning"></span>
+	
+		<table id="teste" style="width: 90%">
+	
+		</table>
+		<div id="botoesRemover"></div>
+	
+		
+		<script type="text/javascript" src="mapa.js"></script>
+	</h:form>
+</h:body>
+</html>
