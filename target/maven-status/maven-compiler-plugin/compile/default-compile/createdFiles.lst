@@ -1,0 +1,5 @@
+br\com\TCCMapa\ManagedBeans\MapaManagedBean.class
+br\com\TCCMapa\ManagedBeans\LoginManagedBean.class
+br\com\TCCMapa\model\Usuario.class
+br\com\TCCMapa\dao\UsuarioDAO.class
+br\com\TCCMapa\Pojos\Mapa.class
