@@ -53,6 +53,7 @@ input {
 
 	<script src="bundle.js"></script>
 	<script src="index.js"></script>
+	<script src="teste.geojson"></script>
 
 	<h:form id="mapaForm" enctype="multipart/form-data">
 	
@@ -63,7 +64,11 @@ input {
 		<h:outputLabel value="Escolha uma arquivo .zip que contenha o Shapefile" />		
 		<p:fileUpload fileUploadListener="#{MapaMB.handleFileUpload}" proccess="this" mode="advanced" onstart="Add(PF('uploadWG'))" uploadLabel="Enviar" label="Adicionar"
                   update="messages" auto="true" allowTypes="/(\.|\/)(zip)$/" widgetVar="uploadWG" />
+                  
+        <p:remoteCommand name="recebeJson" process="@this" actionListener="#{MapaMB.recebeJson}" />
+        <p:remoteCommand name="recebeJsonFormas" process="@this" actionListener="#{MapaMB.recebeJsonFormas}" />
         
+        <p:commandButton action="#{MapaMB.buttonAction}" value="Carregar" update="messages"  />
     	<p:growl id="messages" showDetail="true" />
 		<br />
 		<span id="warning"></span>

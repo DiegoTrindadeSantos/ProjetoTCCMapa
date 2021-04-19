@@ -7,29 +7,34 @@
   
   <dependencies>
   	<dependency>
-           <groupId>org.primefaces</groupId>
-           <artifactId>primefaces</artifactId>
-           <version>6.0</version>
-           <scope>compile</scope>
-     </dependency>
+	    <groupId>org.primefaces</groupId>
+	    <artifactId>primefaces</artifactId>
+	    <version>7.0</version>
+	</dependency>
+
     <dependency>
           <groupId>org.glassfish</groupId>
           <artifactId>javax.faces</artifactId>
           <version>2.2.20</version>
-          <scope>compile</scope>
     </dependency>
 	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>servlet-api</artifactId>
-		<version>2.5</version>
-		<scope>provided</scope>
+	    <groupId>com.sun.faces</groupId>
+	    <artifactId>jsf-api</artifactId>
+	    <version>2.2.20</version>
 	</dependency>
 	<dependency>
-	    <groupId>javax.faces</groupId>
-	    <artifactId>jsf-api</artifactId>
-	    <version>2.1</version>
+	    <groupId>com.sun.faces</groupId>
+	    <artifactId>jsf-impl</artifactId>
+	    <version>2.2.20</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>3.0-alpha-1</version>
 	    <scope>provided</scope>
 	</dependency>
+
 	<dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>

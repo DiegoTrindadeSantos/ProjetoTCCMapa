@@ -25,9 +25,25 @@ public class UsuarioDAO {
  
         return usuario;
       } catch (NoResultException e) {
-            return null;
+    	  e.printStackTrace();
       }
+      return null;
     }
+    
+    public Usuario getUsuario(String nomeUsuario) {
+    	 
+        try {
+          Usuario usuario = (Usuario) em
+           .createQuery(
+               "SELECT u from Usuario u where u.nomeUsuario = :name")
+           .setParameter("name", nomeUsuario).getSingleResult();
+   
+          return usuario;
+        } catch (NoResultException e) {
+              e.printStackTrace();
+        }
+		return null;
+      }
  
   public boolean inserirUsuario(Usuario usuario) {
           try {

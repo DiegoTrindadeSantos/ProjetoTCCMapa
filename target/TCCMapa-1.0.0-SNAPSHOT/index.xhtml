@@ -7,19 +7,21 @@
 <h:head>
 <meta charset="utf-8" />
 <meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	content="width=device-width, initial-scale=1.0" />
 
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-
 <script src="http://calvinmetcalf.github.io/shapefile-js/dist/shp.js"></script>
-<script src="FileSaver.js"></script>
+<script src="http://calvinmetcalf.github.io/leaflet.shapefile/leaflet.shpfile.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
 
 <style type="text/css">
 /* Map */
 #map {
-	height: 300px;
+	height: 400px;
+	z-index: 1;
 }
 
 input {
@@ -27,32 +29,53 @@ input {
 }
 </style>
 
+<style>
+		h2,p {color: white;}
+		.gitButton{
+			padding:15px 30px;
+			background-color: #47a230;
+			text-decoration: none;
+			font-weight: 900;
+			color: white;
+			text-transform:uppercase;
+			transition: background-color .5s;
+			border: none;
+    		border-radius: 2px;
+    		cursor: pointer;
+		}
+		.gitButton:hover {background-color: #1d7806}
+		.gitButton:visited {color: white;}
+		}
+	</style>
+
 </h:head>
 <h:body>
 
-
+	<script src="bundle.js"></script>
+	<script src="index.js"></script>
+	<script src="teste.geojson"></script>
 
 	<h:form id="mapaForm" enctype="multipart/form-data">
+	
+	<div id="map"></div>
 
-
-		<div id="map"></div>
-		<br />
+	<p:panel id="panel" header="Importação ShapeFile" style="margim-bottom:10px;">
+		
+		<h:outputLabel value="Escolha uma arquivo .zip que contenha o Shapefile" />		
 		<p:fileUpload fileUploadListener="#{MapaMB.handleFileUpload}" proccess="this" mode="advanced" onstart="Add(PF('uploadWG'))" uploadLabel="Enviar" label="Adicionar"
                   update="messages" auto="true" allowTypes="/(\.|\/)(zip)$/" widgetVar="uploadWG" />
+                  
+        <p:remoteCommand name="recebeJson" process="@this" actionListener="#{MapaMB.recebeJson}" />
+        <p:remoteCommand name="recebeJsonFormas" process="@this" actionListener="#{MapaMB.recebeJsonFormas}" />
         
+        <p:commandButton action="#{MapaMB.buttonAction}" value="Carregar" update="messages"  />
     	<p:growl id="messages" showDetail="true" />
-    	
 		<br />
-		
 		<span id="warning"></span>
-	
-		<table id="teste" style="width: 90%">
-	
-		</table>
-		<div id="botoesRemover"></div>
+	</p:panel>
 	
 		
-		<script type="text/javascript" src="mapa.js"></script>
+		<script src="mapa.js"></script>
 	</h:form>
 </h:body>
 </html>
